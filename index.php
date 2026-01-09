@@ -10,6 +10,13 @@
         <title>Gestion RH</title>
     </head>
     <body>
+        <form method="POST">
+            <input type="text" name="lastName" placeholder="Nom">
+            <input type="text" name="firstName" placeholder="Prénom">
+            <input type="text" name="mail" placeholder="Mail">
+            <input type="text" name="zipCode" placeholder="Code postal">
+            <button name="create">Ajouter un utilisateur</button>
+        </form>
         <table>
             <thead>
                 <tr>
