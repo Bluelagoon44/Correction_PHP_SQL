@@ -15,6 +15,27 @@
         $createUserRequest->execute();
     }
 
-    $usersRequest = $db->query("SELECT * from user");
-    $users = $usersRequest->fetchAll();
+    if(isset($_POST["update"])){
+        $userToUpdateRequest = $db->prepare("SELECT * FROM user WHERE id=:id");
+        $userToUpdateRequest->bindParam(":id",$id);
+        $id = $_POST["update"];
+        $userToUpdateRequest->execute();
+        $user = $userToUpdateRequest->fetch();
+    }
+    else{
+        $usersRequest = $db->query("SELECT * from user");
+        $users = $usersRequest->fetchAll();
+    }
+
+    if(isset($_POST["confirmUpdate"])){
+        $userToConfirmUpdateRequest = $db->prepare("UPDATE user SET firstName=:firstName, lastName=:lastName, mail=:mail, zipCode=:zipCode WHERE id=:id");
+        $userToConfirmUpdateRequest->execute([
+            ":id" => $_POST["confirmUpdate"],
+            ":firstName" => $_POST["firstName"],
+            ":lastName"=> $_POST["lastName"],
+            ":mail"=> $_POST["mail"],
+            ":zipCode"=> $_POST["zipCode"]
+        ]);
+        header("Location:./index.php");
+    }
 ?>

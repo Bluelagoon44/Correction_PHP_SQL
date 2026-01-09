@@ -24,6 +24,7 @@
                     <th>Prénom</th>
                     <th>Mail</th>
                     <th>Code postal</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +34,12 @@
                         <td><?= $user["firstName"] ?></td>
                         <td><?= $user["mail"] ?></td>
                         <td><?= $user["zipCode"] ?></td>
+                        <td>
+                            <form action="update.php" method="POST">
+                                <button value="<?= $user["id"] ?>" name="update">Modifier</button>
+                            </form>
+                            <!-- <form method="POST"><button>Supprimer</button></form> -->
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
