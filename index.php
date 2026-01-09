@@ -38,7 +38,9 @@
                             <form action="update.php" method="POST">
                                 <button value="<?= $user["id"] ?>" name="update">Modifier</button>
                             </form>
-                            <!-- <form method="POST"><button>Supprimer</button></form> -->
+                            <form method="POST">
+                                <button value="<?= $user["id"] ?>" name="delete">Supprimer</button>
+                            </form>
                         </td>
                     </tr>
                 <?php } ?>

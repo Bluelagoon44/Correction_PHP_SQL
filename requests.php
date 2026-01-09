@@ -15,6 +15,13 @@
         $createUserRequest->execute();
     }
 
+    if(isset($_POST["delete"])){
+        $userToDeleteRequest = $db->prepare("DELETE FROM user WHERE id=:id");
+        $userToDeleteRequest->execute([
+            ":id"=>$_POST["delete"]
+        ]);
+    }
+
     if(isset($_POST["update"])){
         $userToUpdateRequest = $db->prepare("SELECT * FROM user WHERE id=:id");
         $userToUpdateRequest->bindParam(":id",$id);
